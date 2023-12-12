@@ -11,7 +11,6 @@ jobs:
 
     env:
       TIMESTAMP: ${{ github.run_number }}
-      DATE_FORMAT: $(date +'%Y-%m-%d')
 
     steps:
     - name: Checkout code
@@ -39,8 +38,8 @@ jobs:
           latest
           ${{ github.run_id }}
           ${{ github.run_number }}
-          ${{ DATE_FORMAT }}-${{ github.run_id }}
-          ${{ DATE_FORMAT }}-${{ github.run_number }}
+          $(date +'%Y-%m-%d')-${{ github.run_id }}
+          $(date +'%Y-%m-%d')-${{ github.run_number }}
         builder: mybuilder  # Explicitly specify the builder
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
