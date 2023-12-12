@@ -33,7 +33,7 @@ jobs:
       - name: Get Date
         id: get_date
         run: |
-          sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+          sudo ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
           CURRENT_TIME=$(date +'%Y%m%d.%H%M%S')
           
           echo "TIME=$CURRENT_TIME" >> $GITHUB_ENV
