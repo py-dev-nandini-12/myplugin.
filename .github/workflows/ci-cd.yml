@@ -11,7 +11,7 @@ jobs:
 
     env:
       TIMESTAMP: ${{ github.run_number }}
-      DATE_FORMAT: ${{ format('YYYY-MM-DD') }}
+      DATE_FORMAT: $(date +'%Y-%m-%d')
 
     steps:
     - name: Checkout code
