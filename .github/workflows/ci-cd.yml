@@ -1,4 +1,4 @@
-name: CI/CD
+                                     name: CI/CD
 
 on:
   push:
@@ -22,4 +22,7 @@ jobs:
         tags: |
           0.1
           0.2
+          latest
           ${{ github.run_number }}
+          ${{ github.run_id }}
+          $(date +'%Y%m%d%H%M%S')  # Unique timestamp
