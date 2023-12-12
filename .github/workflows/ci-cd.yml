@@ -20,7 +20,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/buildx-action@v2
       with:
-        context: .
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         file: nandinichatterjee/myplugin  # Adjust path to your Dockerfile
         push: true
         tags: |
