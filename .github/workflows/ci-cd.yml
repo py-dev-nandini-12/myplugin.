@@ -33,7 +33,7 @@ jobs:
       - name: Get Date
         id: get_date
         run: |
-          sudo ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+          sudo timedatectl set-timezone Europe/London
           CURRENT_TIME=$(date +'%Y%m%d.%H%M%S')
           
           echo "TIME=$CURRENT_TIME" >> $GITHUB_ENV
