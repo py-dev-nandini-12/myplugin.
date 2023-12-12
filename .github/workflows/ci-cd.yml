@@ -9,6 +9,10 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    env:
+      TIMESTAMP: ${{ github.run_number }}
+      DATE_FORMAT: ${{ format('YYYY-MM-DD') }}
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -35,8 +39,8 @@ jobs:
           latest
           ${{ github.run_id }}
           ${{ github.run_number }}
-          $(date +'%Y-%m-%d')-${{ github.run_id }}
-          $(date +'%Y-%m-%d')-${{ github.run_number }}
+          ${{ DATE_FORMAT }}-${{ github.run_id }}
+          ${{ DATE_FORMAT }}-${{ github.run_number }}
         builder: mybuilder  # Explicitly specify the builder
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -44,5 +48,3 @@ jobs:
 
     - name: Debug - List builders (after build)
       run: docker buildx ls
-
-
