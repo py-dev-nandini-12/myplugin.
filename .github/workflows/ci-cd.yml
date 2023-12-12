@@ -37,7 +37,7 @@ jobs:
           push: true
           tags: |
             latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/myplugin:${{ env.DATE_FORMAT }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/myplugin:latest
+            ${{ nandinichatterjee }}/myplugin:${{ env.DATE_FORMAT }}
+            ${{ nandinichatterjee }}/myplugin:latest
 
           platforms: linux/amd64,linux/arm64
