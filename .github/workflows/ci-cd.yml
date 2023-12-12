@@ -10,6 +10,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    env:
+      TIMESTAMP: ${{ github.run_number }}  # Use github.run_number as timestamp
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -36,8 +39,9 @@ jobs:
           latest
           ${{ github.run_id }}
           ${{ github.run_number }}
+          ${{ env.TIMESTAMP }}  # Use TIMESTAMP environment variable
           $(date +'%Y-%m-%d')-${{ github.run_id }}
-          $(date +'%Y-%m-%d')-${{ github.run_number }}
+          $(date +'%Y-%m-%d')-${{ env.TIMESTAMP }}  # Use TIMESTAMP environment variable
         builder: mybuilder  # Explicitly specify the builder
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
