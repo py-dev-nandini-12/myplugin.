@@ -18,6 +18,8 @@ jobs:
         with:
           context: .
           push: true
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
           repository: nandinichatterjee/myplugin
           tags: |
             0.1
