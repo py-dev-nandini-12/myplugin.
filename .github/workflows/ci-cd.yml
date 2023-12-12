@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  setup-buildx:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,22 +21,11 @@ jobs:
     - name: Create Buildx builder
       run: docker buildx create --use --name=mybuilder --platform=linux/amd64,linux/arm64
 
-    - name: Debug - List builders
+    - name: Debug - List builders (before build)
       run: docker buildx ls
-
-  build-and-push:
-    needs: setup-buildx
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
 
     - name: Set up QEMU (for ARM64 platforms)
       run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-
-    - name: Debug - List builders (before build)
-      run: docker buildx ls
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
