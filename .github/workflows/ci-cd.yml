@@ -33,7 +33,7 @@ jobs:
       run: echo "DATE_FORMAT=${DATE_FORMAT}"
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v2.7.0
       with:
         context: .
         push: true
@@ -49,5 +49,6 @@ jobs:
 
     - name: Debug - List builders (after build)
       run: docker buildx ls
+
 
 
