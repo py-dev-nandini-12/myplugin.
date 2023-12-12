@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TIMESTAMP: ${{ format('YYYY-MM-DDTHH-mm-ss') }}
+      TIMESTAMP: ${{ format('{0:yyyy-MM-ddTHH-mm-ss}', github.event.head_commit.timestamp) }}
 
     steps:
     - name: Checkout code
@@ -43,3 +43,4 @@ jobs:
 
     - name: Debug - List builders (after build)
       run: docker buildx ls
+
