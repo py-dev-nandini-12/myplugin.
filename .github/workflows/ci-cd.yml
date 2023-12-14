@@ -42,7 +42,6 @@ jobs:
         context: .
         push: true
         tags: |
-          nandinichatterjee/${{ github.event.repository.name }}:latest
           nandinichatterjee/${{ github.event.repository.name }}:${{ steps.get_date.outputs.TIME }}
           myplugin:0.2
         build-args: |
