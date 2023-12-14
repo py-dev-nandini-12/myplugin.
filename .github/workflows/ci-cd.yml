@@ -41,9 +41,8 @@ jobs:
       with:
         context: .
         push: true
-        tags: |
-#          nandinichatterjee/${{ github.event.repository.name }}:${{ steps.get_date.outputs.TIME }}
-          nandinichatterjee/myplugin:${{ steps.get_date.outputs.TIME }}
+        tags: nandinichatterjee/${{ github.event.repository.name }}:${{ steps.get_date.outputs.TIME }}
+
         build-args: |
           PACKAGE_VERSION=${{ env.PACKAGE_VERSION }}
           BRANCH_NAME=${{ env.BRANCH_NAME }}
